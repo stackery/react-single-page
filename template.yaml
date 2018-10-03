@@ -16,6 +16,12 @@ Resources:
       Tracing: Active
       Policies:
         - AWSXrayWriteOnlyAccess
+        - S3CrudPolicy:
+            BucketName: !Ref objectStore86870FA0
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref objectStore86870FA0
+          BUCKET_ARN: !GetAtt objectStore86870FA0.Arn
     Metadata:
       StackeryName: deployFrontEnd
   function5B4675E7DeployTrigger:
@@ -23,6 +29,12 @@ Resources:
     Properties:
       ServiceToken: !GetAtt function5B4675E7.Arn
       StackeryDeploymentTimestamp: !Ref StackeryDeploymentTimestamp
+  objectStore86870FA0:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-objectstore86870fa0
+    Metadata:
+      StackeryName: React App Host
 Parameters:
   StackeryStackTagName:
     Type: String
