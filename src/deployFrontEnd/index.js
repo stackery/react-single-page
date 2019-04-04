@@ -27,7 +27,7 @@ exports.handler = async message => {
         '--userconfig', path.join('/tmp', 'npmrc'),
         'install'
       ],
-      {cwd: tmpDir}
+      { cwd: tmpDir }
     );
     await spawnPromise(
       npm,
@@ -38,7 +38,7 @@ exports.handler = async message => {
         '--userconfig', path.join('/tmp', 'npmrc'),
         'run', 'build'
       ],
-      {cwd: tmpDir}
+      { cwd: tmpDir }
     );
 
     const builtPaths = glob.sync(`${tmpDir}/build/**/*`);
@@ -63,15 +63,14 @@ exports.handler = async message => {
       const s3Response = await s3.putObject(params).promise();
       console.log(s3Response);
     });
+    await cfnCR.sendSuccess('deployFrontEnd', {}, message);
   } catch (error) {
     console.log(error);
     await cfnCR.sendFailure(error.message, message);
-  } finally {
-    await cfnCR.sendSuccess('deployFrontEnd', {}, message);
   }
 };
 
-function spawnPromise (command, args, options) {
+function spawnPromise(command, args, options) {
   console.log(`Running \`${command} '${args.join("' '")}'\`...`);
 
   options = options || {};
@@ -95,7 +94,7 @@ function spawnPromise (command, args, options) {
 
         reject(err);
       } else {
-        resolve({stdout: stdout, stderr: stderr});
+        resolve({ stdout: stdout, stderr: stderr });
       }
     });
   });
