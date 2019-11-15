@@ -65,7 +65,7 @@ Resources:
           - DomainName: !GetAtt FrontEnd.DomainName
             Id: StackeryCDN
             S3OriginConfig:
-              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${cdn28E7E29DOriginAccessIdentity}
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${cdnOriginAccessIdentity}
     Metadata:
       StackeryName: Our CDN
   cdnBucketPolicy:
@@ -76,7 +76,7 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              AWS: !Sub arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${cdn28E7E29DOriginAccessIdentity}
+              AWS: !Sub arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${cdnOriginAccessIdentity}
             Action: s3:GetObject
             Resource: !Sub
               - ${BucketArn}/*
