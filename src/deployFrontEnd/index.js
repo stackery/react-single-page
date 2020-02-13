@@ -70,7 +70,7 @@ exports.handler = async message => {
   }
 };
 
-function spawnPromise(command, args, options) {
+function spawnPromise (command, args, options) {
   console.log(`Running \`${command} '${args.join("' '")}'\`...`);
 
   options = options || {};
