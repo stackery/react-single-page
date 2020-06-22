@@ -171,6 +171,7 @@ Resources:
           TargetOriginId: StackeryCDN
           ViewerProtocolPolicy: redirect-to-https
         Enabled: true
+        DefaultRootObject: index.html
         PriceClass: PriceClass_100
         Origins:
           - DomainName: !GetAtt FrontEnd.DomainName
