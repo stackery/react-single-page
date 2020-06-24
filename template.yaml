@@ -20,6 +20,7 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
         Type: LINUX_CONTAINER
+        EnvironmentVariables: []
       ServiceRole: !GetAtt WebsiteRole.Arn
       Source:
         Type: NO_SOURCE
@@ -69,7 +70,7 @@ Resources:
                       cd ${!CODEBUILD_SRC_DIR}
                     fi
                   - aws s3 sync '${PublishDirectory}' 's3://${DestinationBucketName}' --acl public-read --cache-control 'max-age=0, must-revalidate, public' --no-progress --delete
-          - PublishDirectory: src/site/public
+          - PublishDirectory: src/site/build
             BuildCommand: npm run build
             SourceDirectory: src/site
             DestinationBucketName: !Ref FrontEnd
