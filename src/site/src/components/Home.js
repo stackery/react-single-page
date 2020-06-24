@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div className="home">
         <h2>NICE JOB</h2>
-        <p>Your Serverless Single Page Application</p>
+        <p>Your Serverless Single Page Application...added testing</p>
       </div>
     );
   }
