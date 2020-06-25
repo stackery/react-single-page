@@ -4,8 +4,6 @@ This is the repository for the [React Single Page App Tutorial](https://docs.sta
 
 This tutorial will guide you through the process of deploying and hosting a single-page React application using the serverless approach.
 
-The tutorial is also available in video form on our [YouTube Channel](https://www.youtube.com/watch?v=3-00V9sYhpo&list=PLR310Kv1_epF2vuPK_KhqP79RKiY2Kyoz).
-
 ## Deploy this to your AWS account
 
 You can deploy this application to your own AWS account using the following two Stackery CLI commands:
