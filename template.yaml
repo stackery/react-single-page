@@ -33,7 +33,7 @@ Resources:
                     if [ s3 != "${!_SOURCE_LOCATION%%:*}" ]; then
                       git clone "${SourceLocation}" repo
                       cd repo
-                      git checkout ${SourceVersion}
+                      git checkout "${SourceVersion}"
                     else
                       aws s3 cp "${SourceLocation}" repo.tgz
                       tar --strip-components 1 -xvvzf repo.tgz
@@ -62,7 +62,7 @@ Resources:
                     if [ s3 != "${!_SOURCE_LOCATION%%:*}" ]; then
                       cd "${!CODEBUILD_SRC_DIR}/repo"
                     else
-                      cd ${!CODEBUILD_SRC_DIR}
+                      cd "${!CODEBUILD_SRC_DIR}"
                     fi
                   - aws s3 sync '${PublishDirectory}' 's3://${DestinationBucketName}' --acl public-read --cache-control 'max-age=0, must-revalidate, public' --no-progress --delete
           - PublishDirectory: src/site/build
