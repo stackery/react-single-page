@@ -29,13 +29,13 @@ Resources:
                   ruby: latest
                 commands:
                   - |
-                    _SOURCE_LOCATION=${SourceLocation}
+                    _SOURCE_LOCATION="${SourceLocation}"
                     if [ s3 != "${!_SOURCE_LOCATION%%:*}" ]; then
-                      git clone ${SourceLocation} repo
+                      git clone "${SourceLocation}" repo
                       cd repo
                       git checkout ${SourceVersion}
                     else
-                      aws s3 cp ${SourceLocation} repo.tgz
+                      aws s3 cp "${SourceLocation}" repo.tgz
                       tar --strip-components 1 -xvvzf repo.tgz
                     fi
                   - cd ${SourceDirectory}
